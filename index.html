@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WhisperTrail — Turn a walk into a memory</title>
+
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <div class="grain"></div>
+
+    <main class="app">
+
+        <!-- HOME -->
+        <section id="home" class="screen home-screen">
+
+            <div class="home-top">
+                <span class="brand">WHISPERTRAIL</span>
+                <span class="edition">FIELD NOTES · 01</span>
+            </div>
+
+            <div class="home-content">
+
+                <p class="small-label">A DIGITAL FIELD JOURNAL</p>
+
+                <h1>
+                    Turn a walk<br>
+                    <em>into a memory.</em>
+                </h1>
+
+                <p class="hero-text">
+                    Step outside. Notice something small.
+                    Let AI help you remember it.
+                </p>
+                <p id="aiStatus" class="ai-hint" aria-live="polite">
+    Preparing your local AI...
+</p>
+
+                <button id="startBtn" class="primary-btn">
+                    <span>Begin your walk</span>
+                    <span class="arrow">↗</span>
+                </button>
+
+            </div>
+
+           <div class="home-bottom">
+
+    <span>GO OUTSIDE</span>
+
+    <button id="journalBtn" class="journal-link">
+        MY FIELD JOURNAL
+    </button>
+
+    <span>NOTICE · CAPTURE · REMEMBER</span>
+
+</div>
+
+        </section>
+<!-- FIELD JOURNAL -->
+
+<section id="journalScreen" class="screen hidden">
+
+    <div class="page-top">
+
+        <span class="brand">
+            WHISPERTRAIL
+        </span>
+
+        <span class="counter">
+            FIELD JOURNAL
+        </span>
+
+    </div>
+
+
+    <div class="final-content">
+
+        <p class="small-label">
+            YOUR SAVED MOMENTS
+        </p>
+
+        <h2>
+            Things you<br>
+            <em>noticed.</em>
+        </h2>
+
+        <p class="final-intro">
+            Small moments from your walks, kept here.
+        </p>
+
+        <div id="savedJournal"></div>
+
+        <button id="journalBackBtn" class="outline-btn">
+            ← Back
+        </button>
+
+    </div>
+
+</section>
+
+        <!-- WALK -->
+        <section id="walk" class="screen hidden">
+
+            <div class="page-top">
+                <span class="brand">WHISPERTRAIL</span>
+                <span class="counter">TODAY'S TRAIL</span>
+            </div>
+
+            <div class="walk-content">
+
+                <p class="small-label">LOOK A LITTLE CLOSER</p>
+
+                <h2>
+                    Find one small<br>
+                    <em>detail.</em>
+                </h2>
+
+<p id="walkPrompt" class="walk-text">
+    Find something small that you would normally walk past.
+</p>
+
+                <button id="captureBtn" class="circle-btn">
+                    <span class="plus">+</span>
+                    <span>Capture a moment</span>
+                </button>
+
+            </div>
+
+            <button id="backBtn" class="back-btn">
+                ← Back
+            </button>
+
+        </section>
+
+
+        <!-- MOMENT -->
+        <section id="moment" class="screen hidden">
+
+            <div class="page-top">
+                <span class="brand">WHISPERTRAIL</span>
+                <span class="counter">A MOMENT</span>
+            </div>
+
+            <div class="moment-content">
+
+                <p class="small-label">YOUR MOMENT</p>
+
+                <h2>
+                    What caught<br>
+                    <em>your attention?</em>
+                </h2>
+
+                <label class="photo-box" for="photoInput">
+
+                    <input
+                        type="file"
+                        id="photoInput"
+                        accept="image/*"
+                        capture="environment"
+                    >
+
+                    <div id="photoPlaceholder" class="photo-placeholder">
+                        <span class="camera-icon">+</span>
+                        <span>Add a photograph</span>
+                    </div>
+
+                    <div id="preview"></div>
+
+                </label>
+
+                <div class="observation-box">
+    <label for="observation">WHAT DID YOU NOTICE?</label>
+
+    <textarea
+        id="observation"
+        placeholder="Write a few words about what you saw, heard or felt..."
+    ></textarea>
+
+    <p class="ai-hint">
+        Your observation becomes part of the memory.
+    </p>
+</div>
+
+
+                <button id="saveBtn" class="primary-btn full-btn">
+                    <span>Remember this moment</span>
+                    <span class="arrow">↗</span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- MEMORY RESULT -->
+        <section id="memoryScreen" class="screen hidden">
+
+            <div class="page-top">
+                <span class="brand">WHISPERTRAIL</span>
+                <span class="counter">REMEMBERED</span>
+            </div>
+
+            <div class="memory-content">
+
+                <p class="small-label">A MOMENT REMEMBERED</p>
+
+                <div id="memoryPhoto" class="memory-photo"></div>
+
+                <p id="memoryText" class="memory-text"></p>
+
+                <div class="memory-meta">
+                    <span>OBSERVED BY YOU</span>
+                    <span>✦</span>
+                    <span>INTERPRETED WITH OPEN-SOURCE AI</span>
+                </div>
+
+                <div class="memory-actions">
+
+                    <button id="anotherBtn" class="outline-btn">
+                        + Another moment
+                    </button>
+
+                    <button id="finishBtn" class="primary-btn">
+                        <span>Finish my walk</span>
+                        <span class="arrow">↗</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FINAL TRAIL -->
+        <section id="finalScreen" class="screen hidden">
+
+            <div class="page-top">
+                <span class="brand">WHISPERTRAIL</span>
+                <span class="counter">FIELD NOTES · COMPLETE</span>
+            </div>
+
+            <div class="final-content">
+
+                <p class="small-label">YOUR WALK, REMEMBERED</p>
+
+                <h2>
+                    You were<br>
+                    <em>here.</em>
+                </h2>
+
+               <p id="trailSummary" class="final-intro">
+    A few things you noticed along the way.
+</p>
+
+<div id="trailCount" class="trail-count"></div>
+
+<div id="trail"></div>
+
+                <button id="newWalkBtn" class="outline-btn">
+                    Start another walk
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script type="module" src="/script.js"></script>
+
+</body>
+
+</html>
